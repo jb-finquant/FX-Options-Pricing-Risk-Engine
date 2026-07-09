@@ -23,15 +23,22 @@ Ultimately, the goal of the project is not only to price derivatives, but also t
 - Monte Carlo pricing via Geometric Brownian Motion with Antithetic Variates
 - Convergence analysis: MC pricing converging to BS benchmark as N → ∞
 
+![MC Convergence to Black-Scholes](docs/images/mc_convergence.png)
+![Simulated GBM Paths](docs/images/gbm_simulated_paths.png)
+
 **Greeks**
 - Analytical Greeks (Delta, Gamma, Vega, Theta, Rho) via Garman-Kohlhagen
 - Numerical Greeks via central finite differences (Monte Carlo)
 - Visualisation of all Greeks across a range of spot rates
 
+![Greeks Across Spot Rates](docs/images/greeks_vs_spot.png)
+
 **Risk**
 - Monte Carlo VaR, Parametric VaR, Historical VaR
 - P&L distribution over a one-day risk horizon
 - Real EUR/USD market data via yfinance
+
+![P&L Distribution with VaR](docs/images/pnl_var_distribution.png)
 
 **Delta Hedging**
 - Discrete delta hedging simulation for short and long call positions
