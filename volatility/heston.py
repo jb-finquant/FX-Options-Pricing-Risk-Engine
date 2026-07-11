@@ -1,6 +1,6 @@
 import numpy as np
+import warnings
 from model.parameters import FXModelParameters
-from pricing.black_scholes import black_scholes_fx_call
 from volatility.implied_vol import implied_vol
 
 
@@ -24,7 +24,7 @@ def run_heston_simulation(params: FXModelParameters, seed: int = 2003) -> tuple:
     theta = params.theta if params.theta is not None else params.vol ** 2
 
     if 2 * params.kappa * theta <= params.xi ** 2:
-        print("Warning: Feller condition violated – variance may hit zero.")
+        warnings.warn("Feller condition violated – variance may hit zero.")
 
     W1 = rng.standard_normal((N, n))
     W2 = rng.standard_normal((N, n))

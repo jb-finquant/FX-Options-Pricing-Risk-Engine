@@ -1,8 +1,9 @@
+import numpy as np
 import pytest
 from model.parameters import FXModelParameters
 from simulation.gbm import run_simulation
 from pricing.monte_carlo import compute_price
-from pricing.black_scholes import black_scholes_fx_call
+from pricing.black_scholes import black_scholes_fx_call, black_scholes_fx_put
 
 
 def make_params():
@@ -50,4 +51,20 @@ def test_bs_call_at_the_money_below_spot():
 
 def test_put_call_parity():
     """C - P = S0*e^(-rf*T) - K*e^(-rd*T) — fundamental no-arbitrage relationship."""
-    ...
+    params = make_params()
+
+    call = black_scholes_fx_call(
+        S0=params.S0, K=params.K,
+        rd=params.domestic_r, rf=params.foreign_r,
+        vol=params.vol, T=params.T
+    )
+    put = black_scholes_fx_put(
+        S0=params.S0, K=params.K,
+        rd=params.domestic_r, rf=params.foreign_r,
+        vol=params.vol, T=params.T
+    )
+
+    lhs = call - put
+    rhs = params.S0 * np.exp(-params.foreign_r * params.T) - params.K * np.exp(-params.domestic_r * params.T)
+
+    assert lhs == pytest.approx(rhs, abs=1e-6)

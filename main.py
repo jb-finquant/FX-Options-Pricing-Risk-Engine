@@ -7,7 +7,7 @@ from model.parameters import FXModelParameters
 from data.market_data import load_market_data
 from simulation.gbm import run_simulation
 from pricing.monte_carlo import compute_price
-from pricing.black_scholes import black_scholes_fx_call
+from pricing.black_scholes import black_scholes_fx_call, black_scholes_fx_put
 from greeks.finite_differences import mc_delta, mc_gamma, mc_vega, mc_theta, mc_rho, bs_delta, bs_gamma, bs_vega, bs_theta, bs_rho, greek_over_spot
 from risk.var import compute_mc_var, compute_parametric_var, compute_historical_var
 
@@ -28,11 +28,11 @@ params = FXModelParameters(S0=S0, vol=vol, K=round(S0, 4))
 
 paths = run_simulation(params, seed=SEED)
 mc_price = compute_price(params, paths)
-bs_price = black_scholes_fx_call(
-    S0=params.S0, K=params.K,
-    rd=params.domestic_r, rf=params.foreign_r,
-    vol=params.vol, T=params.T
-)
+bs_price = (black_scholes_fx_call(S0=params.S0, K=params.K, rd=params.domestic_r,
+                          rf=params.foreign_r, vol=params.vol, T=params.T)
+    if params.OptionsType == "Call"
+    else black_scholes_fx_put(S0=params.S0, K=params.K, rd=params.domestic_r,
+                              rf=params.foreign_r, vol=params.vol, T=params.T))
 
 print(Fore.CYAN + "=" * 70 + Style.RESET_ALL)
 print(f"{'MC Price:':<20} {mc_price: .6f}")

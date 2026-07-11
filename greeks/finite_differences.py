@@ -86,11 +86,18 @@ def bs_theta(params: FXModelParameters):
     """Analytical Theta — Garman & Kohlhagen (1983)."""
     d1 = (np.log(params.S0 / params.K) + (params.domestic_r - params.foreign_r + 0.5 * params.vol**2) * params.T) / (params.vol * np.sqrt(params.T))
     d2 = d1 - params.vol * np.sqrt(params.T)
-    return (
-        -params.S0 * np.exp(-params.foreign_r * params.T) * norm.pdf(d1) * params.vol / (2 * np.sqrt(params.T))
-        - params.domestic_r * params.K * np.exp(-params.domestic_r * params.T) * norm.cdf(d2)
-        + params.foreign_r * params.S0 * np.exp(-params.foreign_r * params.T) * norm.cdf(d1)
-    )
+    if params.OptionsType == "Call":
+        return (
+            -params.S0 * np.exp(-params.foreign_r * params.T) * norm.pdf(d1) * params.vol / (2 * np.sqrt(params.T))
+            - params.domestic_r * params.K * np.exp(-params.domestic_r * params.T) * norm.cdf(d2)
+            + params.foreign_r * params.S0 * np.exp(-params.foreign_r * params.T) * norm.cdf(d1)
+        )
+    elif params.OptionsType == "Put":
+        return (
+            -params.S0 * np.exp(-params.foreign_r * params.T) * norm.pdf(d1) * params.vol / (2 * np.sqrt(params.T))
+            + params.domestic_r * params.K * np.exp(-params.domestic_r * params.T) * norm.cdf(-d2)
+            - params.foreign_r * params.S0 * np.exp(-params.foreign_r * params.T) * norm.cdf(-d1)
+        )
 
 
 def mc_rho(params: FXModelParameters, seed: int = 2003, h: float = None):
@@ -108,10 +115,13 @@ def mc_rho(params: FXModelParameters, seed: int = 2003, h: float = None):
 
 
 def bs_rho(params: FXModelParameters):
-    """Rho = K·T·e^(-rd·T)·N(d2) — Garman & Kohlhagen (1983)."""
+    """Rho — Garman & Kohlhagen (1983)."""
     d1 = (np.log(params.S0 / params.K) + (params.domestic_r - params.foreign_r + 0.5 * params.vol**2) * params.T) / (params.vol * np.sqrt(params.T))
     d2 = d1 - params.vol * np.sqrt(params.T)
-    return params.K * params.T * np.exp(-params.domestic_r * params.T) * norm.cdf(d2)
+    if params.OptionsType == "Call":
+        return params.K * params.T * np.exp(-params.domestic_r * params.T) * norm.cdf(d2)
+    elif params.OptionsType == "Put":
+        return -params.K * params.T * np.exp(-params.domestic_r * params.T) * norm.cdf(-d2)
 
 
 def greek_over_spot(greek_fn, params: FXModelParameters, spot_range: np.ndarray) -> np.ndarray:
