@@ -154,7 +154,7 @@ plt.show()
 
 fig, ax = plt.subplots(figsize=(12, 6))
 ax.plot(paths[:50, :].T, alpha=0.4, linewidth=0.8)
-ax.axhline(y=params.S0, color="black", linestyle="--", linewidth=1.5, label=f"S0 = {params.S0}")
+ax.axhline(y=params.S0, color="black", linestyle="--", linewidth=1.5, label=f"S0 = {params.S0:.4f}")
 ax.axhline(y=params.K,  color="red",   linestyle="--", linewidth=1.5, label=f"Strike = {params.K}")
 ax.set_title("Simulated GBM Paths")
 ax.set_xlabel("Time Steps (Days)")
