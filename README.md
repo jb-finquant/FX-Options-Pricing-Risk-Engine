@@ -6,15 +6,13 @@ A quantitative finance project implementing an FX options pricing and risk manag
 
 ## Motivation
 
-My background is in corporate finance, with experience in M&A and private equity. Alongside this, I developed a strong interest in financial markets and quantitative methods through my Bachelor's thesis, where I worked on the predictive power of the Variance Risk Premium and future stock returns.
+My career so far has been built in corporate finance — M&A advisory, valuation, and private equity internships. The analytical depth suits me, but markets have always run in parallel.
 
-This project was built to deepen my understanding of derivative pricing and risk management by translating financial theory into code. Rather than treating pricing models as black boxes, the objective was to understand their assumptions, implementation, and practical limitations.
+The turning point was my Bachelor's thesis. Working with a 10.5 million row dataset in R, analysing the predictive power of the Variance Risk Premium on equity returns, I got my first real taste of quantitative research. Starting a Master's in Finance at Católica Lisbon, I wanted to go deeper: not just reading about derivatives pricing, but building it from the ground up.
 
-The framework starts with the analytical Black-Scholes / Garman-Kohlhagen model for FX options and uses it as a benchmark for Monte Carlo pricing. It is then extended to Greeks, Value-at-Risk, stochastic volatility modelling, and discrete delta hedging to explore how model performance changes once some of the simplifying assumptions of Black-Scholes are relaxed.
+This project is the result. It starts where every derivatives course starts — Black-Scholes — and systematically breaks its assumptions: constant volatility, continuous hedging, no smile. Each module asks a simple question: what happens when the model meets reality?
 
-Ultimately, the goal of the project is not only to price derivatives, but also to understand the trade-offs between mathematical models and real-world market behaviour.
-
----
+I like maths. I like markets. This is what that looks like in code.
 
 ## What This Project Covers
 
