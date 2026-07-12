@@ -62,4 +62,5 @@ ax4.set_ylabel("P&L")
 ax4.legend()
 
 plt.tight_layout()
+plt.savefig("docs/images/delta_hedging.png", dpi=150, bbox_inches="tight")
 plt.show()

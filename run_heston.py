@@ -76,6 +76,7 @@ ax4.set_ylabel("Option Price")
 ax4.legend()
 
 plt.tight_layout()
+plt.savefig("docs/images/heston_model.png", dpi=150, bbox_inches="tight")
 plt.show()
 
 # --- Sensitivity Analysis ---
@@ -111,4 +112,5 @@ ax6.set_ylabel("Implied Volatility")
 ax6.legend()
 
 plt.tight_layout()
+plt.savefig("docs/images/heston_sensitivity.png", dpi=150, bbox_inches="tight")
 plt.show()
