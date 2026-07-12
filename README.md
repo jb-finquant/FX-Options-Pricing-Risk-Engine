@@ -45,11 +45,16 @@ Ultimately, the goal of the project is not only to price derivatives, but also t
 - P&L attribution: option P&L vs hedge P&L vs hedging error
 - Theta/Gamma decomposition of the hedging error
 
+![Delta Hedging](docs/images/delta_hedging.png)
+
 **Stochastic Volatility**
-- Euler-Maruyama simulation of spot and variance paths
+- Euler-Maruyance simulation of spot and variance paths
 - Heston vs BS price comparison
 - Emergent volatility smile from Heston MC prices via implied vol extraction
 - Sensitivity analysis: smile shape as a function of ρ and ξ
+
+![Heston Model](docs/images/heston_model.png)
+![Heston Sensitivity](docs/images/heston_sensitivity.png)
 
 **Implied Volatility**
 - Brent's root-finding method to invert the BS pricing formula
