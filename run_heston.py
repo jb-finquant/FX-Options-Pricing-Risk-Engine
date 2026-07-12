@@ -53,7 +53,7 @@ ax1.set_xlabel("Time Steps (Days)")
 ax1.set_ylabel("Spot Rate")
 ax1.legend()
 
-ax2.plot(np.sqrt(var_paths[:50, :]).T, alpha=0.4, linewidth=0.8)
+ax2.plot(np.sqrt(np.maximum(var_paths[:50, :], 0)).T, alpha=0.4, linewidth=0.8)
 ax2.axhline(y=np.sqrt(params.theta), color="red", linestyle="--",
             linewidth=1.5, label=f"Long-run Vol = {np.sqrt(params.theta):.4f}")
 ax2.set_title("Stochastic Volatility Paths")
