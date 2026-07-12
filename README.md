@@ -1,16 +1,16 @@
 # FX Options Pricing & Risk Engine
 
-A quantitative finance project implementing an FX options pricing and risk management engine in Python. Built to demonstrate derivatives pricing, Greeks, risk modelling, delta hedging, and stochastic volatility — using EUR/USD market data from Yahoo Finance.
+A quantitative finance project implementing an FX options pricing and risk management engine in Python. Built to demonstrate derivatives pricing, Greeks, risk modelling, delta hedging, and stochastic volatility - using EUR/USD market data from Yahoo Finance.
 
 ---
 
 ## Motivation
 
-My career so far has been built in corporate finance — M&A advisory, valuation, and private equity internships. The analytical depth suits me, but markets have always run in parallel.
+My career so far has been built in corporate finance: M&A advisory, valuation, and private equity internships. The analytical depth suits me, but markets have always run in parallel.
 
 The turning point was my Bachelor's thesis. Working with a 10.5 million row dataset in R, analysing the predictive power of the Variance Risk Premium on equity returns, I got my first real taste of quantitative research. Starting a Master's in Finance at Católica Lisbon, I wanted to go deeper: not just reading about derivatives pricing, but building it from the ground up.
 
-This project is the result. It starts where every derivatives course starts — Black-Scholes — and systematically breaks its assumptions: constant volatility, continuous hedging, no smile. Each module asks a simple question: what happens when the model meets reality?
+This project is the result. It starts where every derivatives course starts, Black-Scholes, and systematically breaks its assumptions: constant volatility, continuous hedging, no smile. Each module asks a simple question: what happens when the model meets reality?
 
 I like maths. I like markets. This is what that looks like in code.
 
